@@ -1,3 +1,4 @@
-.env 
+.env
+.env.docker 
 .venv 
 .vscode
