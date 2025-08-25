@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - 8000:8010
+    volumes:
+      - .:/app
+    environment:
+      - DEBUG=1                    
+      - DB_NAME=${DB_NAME}         
+      - DB_USER=${DB_USER}        
+      - DB_PASSWORD=${DB_PASSWORD} 
+      - DB_PORT=3306               
+    depends_on:
+      - db
+    env_file:
+      - .env.docker
+  
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}        
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD} 
+    ports:
+      - 3307:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  # Volumen persistente para almacenar los datos de MySQL
+  # Los datos sobrevivirán aunque se eliminen los contenedores
+  mysql_data:
