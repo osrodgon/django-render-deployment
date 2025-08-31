@@ -34,7 +34,8 @@ ALLOWED_HOSTS = [
     '0.0.0.0',
     '.onrender.com',  # Para deployment en Render
     '.railway.app',   # Para deployment en Railway
-    'django-crud-api-c2zm.onrender.com'
+    '.supabase.co',   # Pare deployment en Supabase
+    'django-crud-api-postgressql.onrender.com'
 ]
 
 
@@ -90,12 +91,15 @@ WSGI_APPLICATION = 'book_system.wsgi.application'
 
 DATABASES = {
     'default': {
-            'ENGINE': 'django.db.backends.mysql',  # Cambia el motor a MySQL o postgres según tu base de datos
-            'NAME': os.getenv('DB_NAME'),          # Nombre de tu base de datos
-            'USER': os.getenv('DB_USER'),          # Usuario de tu base de datos
-            'PASSWORD': os.getenv('DB_PASSWORD'),  # Contraseña del usuario
-            'HOST': os.getenv('DB_HOST'),          # Dirección del servidor de la base de datos (e.g., 'localhost')
+            'ENGINE': 'django.db.backends.postgresql',  # Cambia el motor a MySQL o postgres según tu base de datos
+            'NAME': os.getenv('DB_NAME'),               # Nombre de tu base de datos
+            'USER': os.getenv('DB_USER'),               # Usuario de tu base de datos
+            'PASSWORD': os.getenv('DB_PASSWORD'),       # Contraseña del usuario
+            'HOST': os.getenv('DB_HOST'),               # Dirección del servidor de la base de datos (e.g., 'localhost')
             'PORT': os.getenv('DB_PORT'),
+            # 'OPTIONS': {
+            #     'sslmode': 'require'
+            # }
             # 'OPTIONS': {
             #     'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             #     'charset': 'utf8mb4',
@@ -121,7 +125,7 @@ if DEBUG:
 else:
     # En producción, especifica orígenes específicos
     CORS_ALLOWED_ORIGINS += [
-        "https://django-crud-api-gu1j.onrender.com",
+        "https://django-crud-api-postgressql.onrender.com",
         # "https://tu-frontend.vercel.app",
         # "https://tu-frontend.netlify.app",
     ]

@@ -24,8 +24,7 @@ RUN apt-get update \
     gcc \                          
     python3-dev \                  
     pkg-config \                   
-    default-libmysqlclient-dev \   
-    libmariadb-dev \               
+    postgresql-client \   
     && apt-get clean \                 
     && rm -rf /var/lib/apt/lists/*     
     
